@@ -13,6 +13,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
+    <!-- Extra -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    backgroundImage: {
+                        //'bus': "linear-gradient(180.00deg, rgba(3, 7, 18, 0.5),rgba(3, 7, 18, 0) 100%), url('images/banner.png')",
+                        'welcome': "linear-gradient(180.00deg, rgb(18, 19, 45),rgb(18, 19, 45) 100%), url('images/bgbanner.png')",
+
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="container mx-auto mulish">
@@ -27,13 +41,34 @@
                     <li class="tooltip" data-tip="Edit"><a><img src="images/Frame 3.svg"></a></li>
                     <li class="tooltip" data-tip="Add User"><a><img src="images/Frame 4.svg"></a></li>
                     <li class="tooltip" data-tip="Report"><a><img src="images/Frame 5.svg"></a></li>
-                    <li class="py-3 px-10 text-white bg-[#797DFC] font-bold text-xl rounded-full"><p>Sign in</p></li>
+                    <li class="py-3 px-10 text-white bg-[#797DFC] font-bold text-xl rounded-full">
+                        <p>Sign in</p>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <main>
+        <!-- Welcome Section -->
+        <section class="mx-4 lg:mx-32">
+            <div class="bg-welcome bg-no-repeat bg-center p-14 lg:p-28 flex flex-col lg:flex-row items-center justify-around rounded-2xl gap-4 lg:gap-0">
+                <div class="space-y-6 lg:space-y-10">
+                    <p class="font-extrabold text-white text-6xl">Welcome to the <br> <span class="text-[#797DFCFF]">ReTro</span> Forum</p>
+                    <p class="text-white">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
+                    <div class="bg-white w-80 flex items-center p-2 rounded-full">
+                        <input placeholder="Search here anything">
+                        <button class="bg-[#797DFC] rounded-full text-white font-bold text-xl ml-5 p-4">Search</button>
+                    </div>
+                </div>
 
+                <div class="bg-white text-2xl p-5 rounded-2xl space-y-4">
+                    <p>Registered Users: 01</p>
+                    <p>Forum: 01</p>
+                    <p>Topics: 01</p>
+                    <p>Replies: 01</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
 
