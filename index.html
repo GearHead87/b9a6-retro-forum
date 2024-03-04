@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Forum</title>
+    <title>DisCover Forum</title>
     <!-- DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,9 +31,9 @@
 
 <body class="container mx-auto mulish">
     <nav>
-        <div class="navbar bg-base-100 mt-6">
+        <div class="navbar bg-base-100 mt-6 flex-col lg:flex-row">
             <div class="flex-1">
-                <a class="btn btn-ghost text-4xl font-extrabold">ReTro</a>
+                <a class="btn btn-ghost text-4xl font-extrabold">DisCover</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
@@ -41,7 +41,7 @@
                     <li class="tooltip" data-tip="Edit"><a><img src="images/Frame 3.svg"></a></li>
                     <li class="tooltip" data-tip="Add User"><a><img src="images/Frame 4.svg"></a></li>
                     <li class="tooltip" data-tip="Report"><a><img src="images/Frame 5.svg"></a></li>
-                    <li class="py-3 px-10 text-white bg-[#797DFC] font-bold text-xl rounded-full">
+                    <li class="py-2 px-4 lg:py-3 lg:px-10 text-white bg-[#797DFC] font-bold text-base lg:text-xl rounded-full">
                         <p>Sign in</p>
                     </li>
                 </ul>
@@ -52,18 +52,18 @@
         <!-- Welcome Section -->
         <section class="mx-4 lg:mx-32">
             <div
-                class="bg-welcome bg-no-repeat bg-center p-14 lg:p-28 flex flex-col lg:flex-row items-center justify-around rounded-2xl gap-4 lg:gap-0">
+                class="bg-welcome bg-no-repeat bg-center p-10 lg:p-28 flex flex-col lg:flex-row items-center justify-around rounded-2xl gap-4 lg:gap-0">
                 <div class="space-y-6 lg:space-y-10">
-                    <p class="font-extrabold text-white text-6xl">Welcome to the <br> <span
-                            class="text-[#797DFCFF]">ReTro</span> Forum</p>
-                    <p class="text-white">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
-                    <div class="bg-white w-80 flex items-center p-2 rounded-full">
+                    <p class="font-extrabold text-white  text-3xl lg:text-6xl">Welcome to the <br> <span
+                            class="text-[#797DFCFF]">DisCover</span> Forum</p>
+                    <p class="text-white text-sm">Share your favorite opinion and win and wp forum coffee mug!</p>
+                    <div class="bg-white w-50 lg:w-80 flex items-center p-5 rounded-full relative">
                         <input id="category-search" placeholder="Search here anything">
-                        <button onclick="categorySearch()" class="bg-[#797DFC] rounded-full text-white font-bold text-xl ml-5 p-4">Search</button>
+                        <button onclick="categorySearch()" class="bg-[#797DFC] rounded-full text-white font-bold text-lg lg:text-xl absolute right-1 p-2 lg:p-3">Search</button>
                     </div>
                 </div>
 
-                <div class="bg-white text-2xl p-5 rounded-2xl space-y-4">
+                <div class="bg-white text-base lg:text-2xl p-3 lg:p-5 rounded-2xl space-y-4">
                     <p>Registered Users: 01</p>
                     <p>Forum: 01</p>
                     <p>Topics: 01</p>
@@ -79,7 +79,11 @@
                     features allow for a streamlined.</p>
             </div>
             <!-- Article/post -->
-            <div class="flex flex-col lg:flex-row mt-4 gap-4">
+            <div class="flex flex-col lg:flex-row justify-around mt-4 gap-4">
+                <div id="loading-spinner" class="bg-[#797DFC1A] p-5 gap-4 rounded-2xl hidden">
+                    <span class="loading loading-dots loading-lg"></span>
+                </div>
+                <!-- Post Container -->
                 <div id="post-container" class="space-y-4">
                     <!-- post start -->
 
@@ -90,7 +94,7 @@
                 <div class="bg-[#12132D0D] p-4 rounded-2xl">
                     <div class="flex items-center justify-between">
                         <h1 class="font-bold text-lg">Title</h1>
-                        <p>Mark as read (<span>4</span>)</p>
+                        <p>Mark as read (<span id="mark-count">1</span>)</p>
                     </div>
                     <!-- Mark as read container -->
                     <div id="mark-container" class="flex flex-col">
@@ -107,9 +111,9 @@
         <!-- Join forum Section -->
         <section
             class="mx-4 lg:mx-32 mt-5 lg:mt-10 bg-[#12132D] rounded-xl flex flex-col-reverse lg:flex-row items-center justify-between">
-            <div class="space-y-4 lg:ml-14">
-                <h2 class="text-4xl font-black text-white">Join Our Forum</h2>
-                <p class="text-white text-lg">Share your favorite opinion and win and wp forum coffee mug! <br> Yes, you
+            <div class="space-y-4 lg:ml-14 p-4">
+                <h2 class="text-2xl lg:text-4xl font-black text-white">Join Our Forum</h2>
+                <p class="text-white text-base lg:text-lg">Share your favorite opinion and win and wp forum coffee mug! <br> Yes, you
                     can run unit tests and view the results directly within the app. </p>
                 <button class="text-white bg-[#797DFC] p-4 rounded-2xl font-bold text-xl">Registered Now</button>
             </div>
@@ -123,7 +127,7 @@
                     features allow for a streamlined.</p>
             </div>
             <!-- Posts -->
-            <div id="latestpost-container" class="flex flex-col lg:flex-row lg:gap-5 mt-4">
+            <div id="latestpost-container" class="flex flex-col lg:flex-row gap-3 lg:gap-5 mt-4">
                 <!-- One Post -->
                 <!-- <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://i.ibb.co/VYGSkLz/pexels-jeshootscom-442576.jpg" /></figure>
@@ -145,11 +149,9 @@
             </div>
         </section>
     </main>
-    <footer class="bg-[#12132D0A] flex flex-col items-center justify-center gap-5 pt-16 mt-5 lg:mt-10">
-        <h1 class="font-black text-4xl">ReTro</h1>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. <br> It has roots in a piece of classical
-            Latin
-            literature from 45 BC</p>
+    <footer class="bg-[#12132D0A] flex flex-col items-center justify-center gap-5 pt-16 mt-5 lg:mt-10 text-center">
+        <h1 class="font-black text-4xl">DisCover</h1>
+        <p>Join the conversation & share your knowledge.</p>
         <img src="images/Social.svg">
         <hr class="bg-[#30325E1A] border-solid border-2 w-10/12 my-4 lg:my-10">
         <p class="mb-4 lg:mb-10">2017, All Rights Reserved.</p>

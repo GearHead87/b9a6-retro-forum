@@ -1,3 +1,5 @@
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
 const loadPost = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
     const data = await res.json();
@@ -22,11 +24,11 @@ const categorySearch = async () =>{
     displayPost(posts);
 };
 
-const displayPost = (posts) => {
+const displayPost = async (posts)  => {
     // console.log(posts);
     const postContainer = document.getElementById('post-container');
     postContainer.textContent = '';
-
+    await loadingSpinner();
     // if no post is found
     if(!posts.length){
         const postCard = document.createElement('div');
@@ -39,9 +41,9 @@ const displayPost = (posts) => {
     }
 
     posts.forEach(post => {
-        console.log(post);
+        // console.log(post);
         const postCard = document.createElement('div');
-        postCard.classList = `bg-[#797DFC1A] flex flex-row p-5 gap-4 rounded-2xl`;
+        postCard.classList = `bg-[#797DFC1A] flex flex-col lg:flex-row items-center p-5 gap-4 rounded-2xl`;
         postCard.innerHTML = `
                         <!-- Status -->
                         <div class="w-14 h-14 bg-white relative rounded-xl">
@@ -64,8 +66,8 @@ const displayPost = (posts) => {
                                 <p class="text-base">${post.description} </p>
                             </div>
                             <!-- Article Information -->
-                            <div class="flex flex-row items-center justify-between">
-                                <div class="flex items-center gap-4">
+                            <div class="flex flex-col lg:flex-row items-center justify-between">
+                                <div class="flex items-center gap-2 lg:gap-4">
                                     <img src="images/tabler-message.svg">
                                     <p>${post.comment_count}</p>
                                     <img src="images/tabler-eye.svg">
@@ -85,6 +87,13 @@ const displayPost = (posts) => {
 const markAsRead = (title, view_count) => {
     // console.log(title, view_count);
     const markContainer = document.getElementById('mark-container');
+
+    // Get mark as read count
+    const markCountElement = document.getElementById('mark-count');
+    const markCount = markCountElement.innerText;
+    let count = parseInt(markCount);
+    // console.log(count);
+    
     const markCard = document.createElement('div');
     markCard.classList = `bg-white inline-flex items-center m-4 p-3 rounded-xl`;
     markCard.innerHTML = `
@@ -92,6 +101,8 @@ const markAsRead = (title, view_count) => {
         <p class="inline-flex"><img src="images/tabler-eye.svg"><span>${view_count}</span></p>
     `;
     markContainer.appendChild(markCard);
+    count += 1;
+    markCountElement.innerText = count;
 }
 
 const displayLatestPost = (posts) => {
@@ -101,7 +112,7 @@ const displayLatestPost = (posts) => {
     posts.forEach(post => {
         // console.log(post);
         const postCard = document.createElement('div');
-        postCard.classList = `card w-96 bg-base-100 shadow-xl`;
+        postCard.classList = `card bg-base-100 shadow-xl`;
 
         postCard.innerHTML = `
         <figure><img src="${post.cover_image}" /></figure>
@@ -123,5 +134,22 @@ const displayLatestPost = (posts) => {
     });
 }
 
-loadLatestPost();
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        loadingSpinner.classList.remove('hidden')
+    }
+    else {
+        loadingSpinner.classList.add('hidden');
+    }
+    
+}
+
+const loadingSpinner = async () =>{
+    toggleLoadingSpinner(true);
+    await sleep(2000);
+    toggleLoadingSpinner(false);
+}
+
 loadPost();
+loadLatestPost();
