@@ -58,8 +58,8 @@
                             class="text-[#797DFCFF]">ReTro</span> Forum</p>
                     <p class="text-white">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
                     <div class="bg-white w-80 flex items-center p-2 rounded-full">
-                        <input placeholder="Search here anything">
-                        <button class="bg-[#797DFC] rounded-full text-white font-bold text-xl ml-5 p-4">Search</button>
+                        <input id="category-search" placeholder="Search here anything">
+                        <button onclick="categorySearch()" class="bg-[#797DFC] rounded-full text-white font-bold text-xl ml-5 p-4">Search</button>
                     </div>
                 </div>
 
@@ -78,57 +78,31 @@
                 <p>Yes, you can run unit tests and view the results directly within the app. <br> The integrated testing
                     features allow for a streamlined.</p>
             </div>
+            <!-- Article/post -->
             <div class="flex flex-col lg:flex-row mt-4 gap-4">
-                <div class="bg-[#797DFC1A] flex flex-row p-5 gap-4 rounded-2xl">
-                    <!-- Status -->
-                    <div class="size-14 bg-white relative rounded-xl">
-                        <div class="size-3 bg-green-400 rounded-full absolute right-0 -top-1"></div>
-                        <div class="size-3 bg-red-400 rounded-full absolute right-0 -top-1"></div>
-                    </div>
-                    <!-- Article Main body -->
-                    <div class="space-y-4">
-                        <!-- Tag and Author -->
-                        <div class="inline-flex gap-5 font-semibold text-sm">
-                            <p># <span>Music</span></p>
-                            <p>Author : <span>Awlad Hossain</span></p>
-                        </div>
-                        <!-- Heading -->
-                        <div>
-                            <h2 class="font-bold text-xl">10 Kids Unaware of Their Halloween Costume</h2>
-                        </div>
-                        <!-- Discreption -->
-                        <div>
-                            <p class="text-base">It’s one thing to subject yourself to ha Halloween costume mishap
-                                because, hey that’s your prerogative</p>
-                        </div>
-                        <!-- Article Information -->
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <img src="images/tabler-message.svg">
-                                <p>560</p>
-                                <img src="images/tabler-eye.svg">
-                                <p>1566</p>
-                                <img src="images/tabler-clock.svg">
-                                <p>5 min</p>
-                            </div>
-                            <div>
-                                <button><i><img src="images/email 1.svg"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                <div id="post-container" class="space-y-4">
+                    <!-- post start -->
+
+                    <!-- Post end -->
                 </div>
+
                 <!-- Mark as read -->
                 <div class="bg-[#12132D0D] p-4 rounded-2xl">
                     <div class="flex items-center justify-between">
                         <h1 class="font-bold text-lg">Title</h1>
                         <p>Mark as read (<span>4</span>)</p>
                     </div>
-                    <div class="bg-white inline-flex items-center m-4 p-3 rounded-xl">
-                        <p class="font-semibold text-balance w-3/4">10 Kids Unaware of Their Halloween Costume</p>
-                        <p class="inline-flex"><img src="images/tabler-eye.svg"><span>1651</span></p>
+                    <!-- Mark as read container -->
+                    <div id="mark-container" class="flex flex-col">
+                        <div class="bg-white inline-flex items-center m-4 p-3 rounded-xl">
+                            <p class="font-semibold text-balance w-3/4">10 Kids Unaware of Their Halloween Costume</p>
+                            <p class="inline-flex"><img src="images/tabler-eye.svg"><span>1651</span></p>
+                        </div>
                     </div>
+
                 </div>
             </div>
+            <!-- Post ended -->
         </section>
         <!-- Join forum Section -->
         <section
@@ -149,9 +123,9 @@
                     features allow for a streamlined.</p>
             </div>
             <!-- Posts -->
-            <div class="flex flex-col lg:flex-row lg:gap-5 mt-4">
+            <div id="latestpost-container" class="flex flex-col lg:flex-row lg:gap-5 mt-4">
                 <!-- One Post -->
-                <div class="card w-96 bg-base-100 shadow-xl">
+                <!-- <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://i.ibb.co/VYGSkLz/pexels-jeshootscom-442576.jpg" /></figure>
                     <div class="card-body">
                         <div class="inline-flex gap-4"><img src="images/calender.svg"><span>29 January 2024</span></div>
@@ -166,51 +140,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- other post -->
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://i.ibb.co/VYGSkLz/pexels-jeshootscom-442576.jpg" /></figure>
-                    <div class="card-body">
-                        <div class="inline-flex gap-4"><img src="images/calender.svg"><span>29 January 2024</span></div>
-                        <h2 class="card-title">What will a mars habitat force that impact in our daily life!!!</h2>
-                        <p>Yes, you can run unit tests and view the results directly within the app. </p>
-                        <div class="flex flex-row gap-4">
-                            <img class="size-14 rounded-full"
-                                src="https://i.ibb.co/z8zx95w/pexels-davide-de-giovanni-1649675.jpg">
-                            <div>
-                                <p class="font-bold text-base">Cameron Williamson</p>
-                                <p>ROR Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://i.ibb.co/VYGSkLz/pexels-jeshootscom-442576.jpg" /></figure>
-                    <div class="card-body">
-                        <div class="inline-flex gap-4"><img src="images/calender.svg"><span>29 January 2024</span></div>
-                        <h2 class="card-title">What will a mars habitat force that impact in our daily life!!!</h2>
-                        <p>Yes, you can run unit tests and view the results directly within the app. </p>
-                        <div class="flex flex-row gap-4">
-                            <img class="size-14 rounded-full"
-                                src="https://i.ibb.co/z8zx95w/pexels-davide-de-giovanni-1649675.jpg">
-                            <div>
-                                <p class="font-bold text-base">Cameron Williamson</p>
-                                <p>ROR Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
+
             </div>
         </section>
     </main>
     <footer class="bg-[#12132D0A] flex flex-col items-center justify-center gap-5 pt-16 mt-5 lg:mt-10">
         <h1 class="font-black text-4xl">ReTro</h1>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. <br> It has roots in a piece of classical Latin
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. <br> It has roots in a piece of classical
+            Latin
             literature from 45 BC</p>
         <img src="images/Social.svg">
         <hr class="bg-[#30325E1A] border-solid border-2 w-10/12 my-4 lg:my-10">
         <p class="mb-4 lg:mb-10">2017, All Rights Reserved.</p>
     </footer>
+    <!-- Javascript -->
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>
