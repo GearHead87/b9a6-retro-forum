@@ -7,14 +7,14 @@ const loadPost = async () => {
     displayPost(posts);
 }
 
-const loadLatestPost = async () =>{
+const loadLatestPost = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
     const data = await res.json();
     const posts = data;
     displayLatestPost(posts);
 }
 
-const categorySearch = async () =>{
+const categorySearch = async () => {
     const searchField = document.getElementById('category-search');
     const searchText = searchField.value;
     // console.log(searchText);
@@ -24,13 +24,13 @@ const categorySearch = async () =>{
     displayPost(posts);
 };
 
-const displayPost = async (posts)  => {
+const displayPost = async (posts) => {
     // console.log(posts);
     const postContainer = document.getElementById('post-container');
     postContainer.textContent = '';
     await loadingSpinner();
     // if no post is found
-    if(!posts.length){
+    if (!posts.length) {
         const postCard = document.createElement('div');
         postCard.classList = `bg-[#797DFC1A] flex flex-row p-5 gap-4 rounded-2xl`;
         postCard.innerHTML = `
@@ -76,7 +76,7 @@ const displayPost = async (posts)  => {
                                     <p>${post.posted_time} min</p>
                                 </div>
                                 <div>
-                                    <button onclick="markAsRead('${post.title}', '${post.view_count}')"><i><img src="images/email 1.svg"></i></button>
+                                    <button onclick="markAsRead('${post.id}')"><i><img src="images/email 1.svg"></i></button>
                                 </div>
                             </div>
         `;
@@ -84,8 +84,11 @@ const displayPost = async (posts)  => {
     })
 }
 
-const markAsRead = (title, view_count) => {
-    // console.log(title, view_count);
+
+
+const markAsRead = async (postId) => {
+    // console.log(postId);
+
     const markContainer = document.getElementById('mark-container');
 
     // Get mark as read count
@@ -93,16 +96,25 @@ const markAsRead = (title, view_count) => {
     const markCount = markCountElement.innerText;
     let count = parseInt(markCount);
     // console.log(count);
-    
-    const markCard = document.createElement('div');
-    markCard.classList = `bg-white inline-flex items-center m-4 p-3 rounded-xl`;
-    markCard.innerHTML = `
-        <p class="font-semibold text-balance w-3/4">${title}</p>
-        <p class="inline-flex"><img src="images/tabler-eye.svg"><span>${view_count}</span></p>
-    `;
-    markContainer.appendChild(markCard);
-    count += 1;
-    markCountElement.innerText = count;
+
+    // get posts
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+    const data = await res.json();
+    const posts = data.posts;
+
+    posts.forEach(post => {
+        if (parseInt(postId) === post.id) {
+            const markCard = document.createElement('div');
+            markCard.classList = `bg-white inline-flex items-center m-4 p-3 rounded-xl`;
+            markCard.innerHTML = `
+                <p class="font-semibold text-balance w-3/4">${post.title}</p>
+                <p class="inline-flex"><img src="images/tabler-eye.svg"><span>${post.view_count}</span></p>
+            `;
+            markContainer.appendChild(markCard);
+            count += 1;
+            markCountElement.innerText = count;
+        }
+    });
 }
 
 const displayLatestPost = (posts) => {
@@ -142,10 +154,10 @@ const toggleLoadingSpinner = (isLoading) => {
     else {
         loadingSpinner.classList.add('hidden');
     }
-    
+
 }
 
-const loadingSpinner = async () =>{
+const loadingSpinner = async () => {
     toggleLoadingSpinner(true);
     await sleep(2000);
     toggleLoadingSpinner(false);
